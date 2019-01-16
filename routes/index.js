@@ -34,12 +34,11 @@ router.post('/complex-request/:device', async function (req, res) {
 
     // get the device from the request parameters
     const deviceToSendCommandTo = req.params.device;
+    const requestJson = req.body;
 
     const requestOptions = {
         method: 'POST',
-        body: {
-            action: 'off'
-        },
+        body: requestJson,
         json: true
     };
 
