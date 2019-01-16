@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
 router.post('/forward-directly-to-arduino', async function (req, res) {
     // TODO: Replace this with the local IP address of your arduino
     const arduinoIpAddress = '192.168.10.136';
-    const arduinoUrl = 'http://'+arduinoIpAddress;
+    const arduinoUrl = 'http://' + arduinoIpAddress;
     const requestJson = req.body;
 
     const requestOptions = {
@@ -26,7 +26,7 @@ router.post('/forward-directly-to-arduino', async function (req, res) {
     res.send(200);
 });
 
-// Send request to correct device based on a request parameter
+// Send request to correct device based on a request parameter named device
 router.post('/complex-request/:device', async function (req, res) {
     // TODO: Replace these with the local IP addresses of your arduinos
     const arduino1Url = 'http://192.168.10.136';
@@ -38,27 +38,19 @@ router.post('/complex-request/:device', async function (req, res) {
     const requestOptions = {
         method: 'POST',
         body: {
-            action:'off'
+            action: 'off'
         },
         json: true
     };
 
     // send request to arduino 1
-    if(deviceToSendCommandTo==='1'){
-        requestOptions.uri=arduino1Url;
+    if (deviceToSendCommandTo === '1') {
+        requestOptions.uri = arduino1Url;
         await rp(requestOptions);
     }
     // send request to arduino 2
-    else if(deviceToSendCommandTo==='2'){
-        requestOptions.uri=arduino2Url;
-        await rp(requestOptions);
-    }
-    // send requests to both arduinos
-    else if(deviceToSendCommandTo==='all'){
-        requestOptions.uri=arduino1Url;
-        await rp(requestOptions);
-
-        requestOptions.uri=arduino2Url;
+    else if (deviceToSendCommandTo === '2') {
+        requestOptions.uri = arduino2Url;
         await rp(requestOptions);
     }
 
