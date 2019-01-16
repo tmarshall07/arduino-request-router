@@ -23,7 +23,7 @@ router.post('/forward-directly-to-arduino', async function (req, res) {
 
     await rp(requestOptions);
 
-    res.send(200);
+    res.sendStatus(200);
 });
 
 // Send request to correct device based on a request parameter named device
@@ -63,7 +63,7 @@ router.post('/complex-request/:device', async function (req, res) {
         await rp(requestOptions);
     }
 
-    res.send(200);
+    res.sendStatus(200);
 });
 
 module.exports = router;
