@@ -4,7 +4,7 @@ module.exports = {
         script: 'bin/www',
         // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
         autorestart: true,
-        watch: false,
+        watch: true,
         max_memory_restart: '1G',
         env: {
             NODE_ENV: 'development',
