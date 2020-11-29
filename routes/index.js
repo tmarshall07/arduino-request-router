@@ -9,8 +9,7 @@ router.get('/', function (req, res, next) {
 
 // Forward request directly to arduino on local network
 router.post('/forward-directly-to-arduino', async function (req, res) {
-    // TODO: Replace this with the local IP address of your arduino
-    const arduinoIpAddress = '192.168.10.130';
+    const arduinoIpAddress = '192.168.86.207'; // Arduino IP address
     const arduinoUrl = 'http://' + arduinoIpAddress;
     const requestJson = req.body;
 
