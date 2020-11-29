@@ -1,6 +1,10 @@
+const axios = require('axios');
 const express = require('express');
 const router = express.Router();
 const rp = require('request-promise');
+
+const arduinoIpAddress = '192.168.86.207'
+const arduinoUrl = 'http://' + arduinoIpAddress;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -8,9 +12,21 @@ router.get('/', function (req, res, next) {
 });
 
 // Forward request directly to arduino on local network
+router.get('/h', async function (req, res) {
+  axios.get(`${arduinoUrl}/H`)
+
+  res.sendStatus(200);
+});
+
+// Forward request directly to arduino on local network
+router.get('/l', async function (req, res) {
+  axios.get(`${arduinoUrl}/L`)
+
+  res.sendStatus(200);
+});
+
+// Forward request directly to arduino on local network
 router.post('/forward-directly-to-arduino', async function (req, res) {
-    const arduinoIpAddress = '192.168.86.207'; // Arduino IP address
-    const arduinoUrl = 'http://' + arduinoIpAddress;
     const requestJson = req.body;
 
     const requestOptions = {
