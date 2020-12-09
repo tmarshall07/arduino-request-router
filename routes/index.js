@@ -13,17 +13,7 @@ router.get('/', function (req, res, next) {
 
 // Forward request directly to arduino on local network
 router.post('/forward-directly-to-arduino', async function (req, res) {
-    const requestJson = req.body;
-
-    const requestOptions = {
-        method: 'POST',
-        uri: arduinoUrl,
-        body: requestJson,
-        json: true
-    };
-
-    await rp(requestOptions);
-
+    await axios.post(arduinoUrl, req.body);
     res.sendStatus(200);
 });
 
