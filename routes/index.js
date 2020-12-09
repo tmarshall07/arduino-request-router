@@ -12,20 +12,6 @@ router.get('/', function (req, res, next) {
 });
 
 // Forward request directly to arduino on local network
-router.get('/h', async function (req, res) {
-  await axios.get(`${arduinoUrl}/H`)
-
-  res.sendStatus(200);
-});
-
-// Forward request directly to arduino on local network
-router.get('/l', async function (req, res) {
-  await axios.get(`${arduinoUrl}/L`)
-
-  res.sendStatus(200);
-});
-
-// Forward request directly to arduino on local network
 router.post('/forward-directly-to-arduino', async function (req, res) {
     const requestJson = req.body;
 
