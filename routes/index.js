@@ -18,13 +18,13 @@ router.get('/status', (req, res) => {
 });
 
 router.get('/arduino-status', async (req, res) => {
-  const [err, arduinoRes] = await to(axios.get(arduinoUrl));
+  const [err] = await to(axios.get(arduinoUrl));
 
   if (err) {
     return res.json({ error: err });
   }
 
-  return res.json(arduinoRes);
+  return res.json({});
 });
 
 // Forward request directly to arduino on local network
