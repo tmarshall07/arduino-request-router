@@ -5,7 +5,7 @@ const router = express.Router();
 const to = require('../lib/to');
 
 // const arduinoIpAddress = '192.168.86.207';
-const getUrl = (id) => `http://${id}`;
+const getUrl = (id) => `http://192.168.86.${id}`;
 
 /* GET home page. */
 router.get('/', (req, res) => {
